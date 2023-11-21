@@ -1,5 +1,5 @@
 export class DateParser {
-    public static addDurationToCurrentDate(duration: string) {
+    public static addDurationToCurrentDate(duration: string): Date {
         const durationParts = DateParser.normalizeDurationInput(duration);
 
         let hours = 0,
@@ -28,7 +28,7 @@ export class DateParser {
     }
 
     public static normalizeDurationInput(input: string): string {
-        const replacements: { [key: string]: string[] } = {
+        const replacements: Record<string, string[]> = {
             d: ['d', 'day', 'days', 'jour', 'jours'],
             h: ['h', 'hour', 'hours', 'heure', 'heures'],
             m: ['m', 'min', 'minute', 'minutes'],

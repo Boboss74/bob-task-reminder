@@ -1,6 +1,13 @@
 export class CheckUtil {
-    public static ensureDefined<T>(value: T | undefined, errorMessage?: string): T {
+    public static ensureDefined<T>(value: T | undefined, errorMessage?: string): asserts value is T {
         if (value === undefined) {
+            throw new Error(errorMessage);
+        }
+        return value;
+    }
+
+    public static ensureNotNulish<T>(value: T | undefined | null, errorMessage?: string): asserts value is T {
+        if (value === undefined || value === null) {
             throw new Error(errorMessage);
         }
         return value;

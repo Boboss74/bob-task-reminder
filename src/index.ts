@@ -8,7 +8,7 @@ void (async () => {
     // catching signals and do something before exit
     ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT', 'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'].forEach(
         (sig) =>
-            process.on(sig, async () => {
+            process.once(sig, async () => {
                 console.log('\n', sig);
                 await mongoService.close();
                 await botService.close();

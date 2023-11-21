@@ -43,3 +43,5 @@ export class MongoService {
         };
     }
 }
+
+export const mongoService = await MongoService.init();
